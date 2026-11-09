@@ -1,0 +1,22 @@
+# Secrets
+.env
+*/.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# ADK local state (sessions, artifacts)
+.adk/
+*/.adk/
+
+# Built data (index, chunks, topic log) - rebuild with python -m hr_agent.ingest
+data/
+
+# Editors / OS
+.idea/
+.vscode/
+.cursor/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,17 @@
+[project]
+name = "hr-onboarding-agent"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "faiss-cpu>=1.15.1",
+    "google-adk>=2.14.0",
+    "google-genai>=2.34.0",
+    "numpy>=2.5.4",
+    "pypdf>=7.0.0",
+    "python-dotenv>=1.2.4",
+]
+
+[dependency-groups]
+dev = [
+    "reportlab>=5.1.0",
+]

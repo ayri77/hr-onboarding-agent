@@ -53,6 +53,13 @@ Nutzer:in ──> ADK Web-UI ──> Agent (Gemini)
 | `eval/fragen.md` | 10 Testfragen mit erwarteter Quelle, zwei davon absichtlich ohne Antwort |
 | `scripts/make_sample_pdfs.py` | erzeugt die Demo-PDFs aus den Markdown-Dateien |
 
+### Modell wählen
+
+Standard ist `gemini-3.5-flash` über die Gemini Developer API. Über `AGENT_MODEL` in `hr_agent/.env` lässt sich
+jedes LiteLLM-Modell einsetzen, z. B. `AGENT_MODEL=openai/gpt-4o-mini` (braucht `OPENAI_API_KEY`). Das kostenlose
+Gemini-Kontingent ist mit 20 Anfragen pro Tag für eine Demo zu knapp, deshalb läuft die Demo über OpenAI. Die
+Embeddings für die Suche bleiben in beiden Fällen bei Gemini (`gemini-embedding-001`).
+
 ## Entscheidungen und Annahmen
 
 - **ADK**, weil im PRD genannt, Chat-UI (US1) ohne eigenes Frontend, Tools sind normale Python-Funktionen,

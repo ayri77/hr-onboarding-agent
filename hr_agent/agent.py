@@ -1,4 +1,6 @@
 from google.adk.agents.llm_agent import Agent
+import os
+from google.adk.models.lite_llm import LiteLlm
 
 from .tools import search_docs
 
@@ -16,8 +18,12 @@ Regeln:
 6. Bei Fragen ohne Bezug zum Unternehmen hilf kurz allgemein oder sag, dass du dafür nicht zuständig bist.
 """
 
+# "gemini-3.5-flash" (default) or a LiteLLM id like "openai/gpt-4o-mini"
+MODEL_ID = os.getenv("AGENT_MODEL", "gemini-3.5-flash")
+model = LiteLlm(model=MODEL_ID) if "/" in MODEL_ID else MODEL_ID
+
 root_agent = Agent(
-    model="gemini-3.5-flash",
+    model=model,
     name="hr_onboarding_agent",
     description="Beantwortet Onboarding-Fragen neuer Mitarbeitender auf Basis der HR-Dokumente.",
     instruction=INSTRUCTION,

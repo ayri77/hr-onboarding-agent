@@ -29,6 +29,9 @@ def log_topic(topic: str, found_in_docs: bool) -> dict:
     Stores only topic, flag and timestamp. No question text, no person.
     """
 
+    if topic not in TOPICS:
+        topic = "sonstiges"    
+
     DATA_DIR.mkdir(exist_ok=True)
     with open(TOPICS_PATH, "a", encoding="utf-8") as f:
         f.write(

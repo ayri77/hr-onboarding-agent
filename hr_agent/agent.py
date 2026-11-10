@@ -1,4 +1,6 @@
 from google.adk.agents.llm_agent import Agent
+import os
+from google.adk.models.lite_llm import LiteLlm
 
 from .tools import search_docs, log_topic
 
@@ -17,8 +19,12 @@ Regeln:
 7. Nach jeder Antwort auf eine Frage zum Unternehmen rufst du log_topic auf: topic aus der Liste erster_tag, arbeitszeit, it_zugang, geraete, urlaub, krankmeldung, sonstiges; found_in_docs = ob die Antwort in den Unterlagen stand.
 """
 
+# "gemini-3.5-flash" (default) or a LiteLLM id like "openai/gpt-4o-mini"
+MODEL_ID = os.getenv("AGENT_MODEL", "gemini-3.5-flash")
+model = LiteLlm(model=MODEL_ID) if "/" in MODEL_ID else MODEL_ID
+
 root_agent = Agent(
-    model="gemini-3.5-flash",
+    model=model,
     name="hr_onboarding_agent",
     description="Beantwortet Onboarding-Fragen neuer Mitarbeitender auf Basis der HR-Dokumente.",
     instruction=INSTRUCTION,
